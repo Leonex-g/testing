@@ -1,51 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Restaurant Menu</title>
+
+<title>SP Restaurant Menu</title>
 
 <style>
 
 body{
-font-family: Arial;
 margin:0;
-background:#f5f5f5;
+font-family:Arial;
+background:#f2f2f2;
 }
 
 /* HEADER */
 
 .header{
+background:white;
+padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 20px;
-background:white;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-position:sticky;
-top:0;
-z-index:1000;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
+/* 3D BLACK LOGO */
+
 .logo{
-font-size:28px;
+font-size:30px;
 font-weight:bold;
 color:black;
 text-shadow:
-1px 1px 0 #888,
-2px 2px 0 #666,
-3px 3px 0 #444,
-4px 4px 5px rgba(0,0,0,0.4);
+1px 1px 0 #777,
+2px 2px 0 #555,
+3px 3px 0 #333,
+4px 4px 6px rgba(0,0,0,0.5);
 }
 
-.header-links{
-font-size:14px;
-}
-
-.header-links span{
-margin-left:15px;
+.top-menu span{
+margin-left:20px;
 cursor:pointer;
-color:#333;
+font-weight:600;
 }
 
 /* CATEGORY */
@@ -53,19 +50,18 @@ color:#333;
 .category{
 margin:20px;
 background:white;
-border-radius:10px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
 overflow:hidden;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
-.category-header{
+.category-title{
 padding:15px;
 font-size:20px;
 font-weight:bold;
-cursor:pointer;
 display:flex;
 justify-content:space-between;
-align-items:center;
+cursor:pointer;
 background:#fafafa;
 }
 
@@ -73,11 +69,15 @@ background:#fafafa;
 transition:0.3s;
 }
 
-.category-items{
+.rotate{
+transform:rotate(90deg);
+}
+
+.items{
 padding:10px;
 }
 
-/* MENU ITEM */
+/* ITEM STYLE */
 
 .image-item{
 display:flex;
@@ -93,8 +93,8 @@ flex-direction:column;
 }
 
 .item-name{
-font-size:16px;
 font-weight:600;
+font-size:16px;
 }
 
 .item-price{
@@ -103,26 +103,19 @@ color:#666;
 }
 
 .food-img{
-width:70px;
-height:70px;
-object-fit:cover;
+width:75px;
+height:75px;
 border-radius:10px;
+object-fit:cover;
 background:#ddd;
 }
 
-/* HIDDEN */
-
-.hidden{
+.hide{
 display:none;
-}
-
-.rotate{
-transform:rotate(90deg);
 }
 
 </style>
 </head>
-
 
 <body>
 
@@ -130,11 +123,9 @@ transform:rotate(90deg);
 
 <div class="header">
 
-<div class="logo">
-SP Restaurant
-</div>
+<div class="logo">SP Restaurant</div>
 
-<div class="header-links">
+<div class="top-menu">
 <span>Offers</span>
 <span>Settings</span>
 </div>
@@ -142,24 +133,23 @@ SP Restaurant
 </div>
 
 
-
 <!-- BURGER -->
 
 <div class="category">
 
-<div class="category-header" onclick="toggleCategory(this)">
+<div class="category-title" onclick="toggle(this)">
 Burger
 <span class="arrow">▶</span>
 </div>
 
-<div class="category-items">
+<div class="items">
 
 <div class="image-item">
 <div class="item-info">
 <div class="item-name">Aloo Tikki Burger</div>
 <div class="item-price">₹40</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -167,7 +157,7 @@ Burger
 <div class="item-name">Cheese Burger</div>
 <div class="item-price">₹55</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -175,7 +165,7 @@ Burger
 <div class="item-name">Double Tikki Burger</div>
 <div class="item-price">₹60</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -183,7 +173,7 @@ Burger
 <div class="item-name">French Burger</div>
 <div class="item-price">₹80</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 </div>
@@ -195,12 +185,12 @@ Burger
 
 <div class="category">
 
-<div class="category-header" onclick="toggleCategory(this)">
+<div class="category-title" onclick="toggle(this)">
 Maggi
 <span class="arrow">▶</span>
 </div>
 
-<div class="category-items">
+<div class="items">
 
 <div class="image-item">
 <div class="item-info">
@@ -215,7 +205,7 @@ Maggi
 <div class="item-name">Double Masala Maggi</div>
 <div class="item-price">₹35</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -259,19 +249,19 @@ Maggi
 
 <div class="category">
 
-<div class="category-header" onclick="toggleCategory(this)">
+<div class="category-title" onclick="toggle(this)">
 Snacks
 <span class="arrow">▶</span>
 </div>
 
-<div class="category-items">
+<div class="items">
 
 <div class="image-item">
 <div class="item-info">
 <div class="item-name">Plain Sweetcorn</div>
 <div class="item-price">₹40</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -279,7 +269,7 @@ Snacks
 <div class="item-name">Classic Sweetcorn</div>
 <div class="item-price">₹50</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -287,7 +277,7 @@ Snacks
 <div class="item-name">Butter Masala Sweetcorn</div>
 <div class="item-price">₹50</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -295,7 +285,7 @@ Snacks
 <div class="item-name">Tandoori Sweetcorn</div>
 <div class="item-price">₹60</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -303,7 +293,7 @@ Snacks
 <div class="item-name">French Fries</div>
 <div class="item-price">₹80</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -311,7 +301,7 @@ Snacks
 <div class="item-name">Peri Peri Fries</div>
 <div class="item-price">₹90</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -319,7 +309,7 @@ Snacks
 <div class="item-name">Cheese Fries</div>
 <div class="item-price">₹120</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 </div>
@@ -331,19 +321,19 @@ Snacks
 
 <div class="category">
 
-<div class="category-header" onclick="toggleCategory(this)">
+<div class="category-title" onclick="toggle(this)">
 Pasta
 <span class="arrow">▶</span>
 </div>
 
-<div class="category-items">
+<div class="items">
 
 <div class="image-item">
 <div class="item-info">
 <div class="item-name">Vegetables Macaroni</div>
 <div class="item-price">₹80 | ₹110</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -351,7 +341,7 @@ Pasta
 <div class="item-name">Ghar Jesa Pasta</div>
 <div class="item-price">₹80 | ₹110</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -359,7 +349,7 @@ Pasta
 <div class="item-name">White Sauce Pasta</div>
 <div class="item-price">₹110 | ₹140</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -367,7 +357,7 @@ Pasta
 <div class="item-name">Red Sauce Pasta</div>
 <div class="item-price">₹110 | ₹140</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -375,7 +365,7 @@ Pasta
 <div class="item-name">Mix Sauce Pasta</div>
 <div class="item-price">₹110 | ₹140</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -383,7 +373,7 @@ Pasta
 <div class="item-name">Pasta Delight</div>
 <div class="item-price">₹130 | ₹160</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 </div>
@@ -395,19 +385,19 @@ Pasta
 
 <div class="category">
 
-<div class="category-header" onclick="toggleCategory(this)">
+<div class="category-title" onclick="toggle(this)">
 Shakes
 <span class="arrow">▶</span>
 </div>
 
-<div class="category-items">
+<div class="items">
 
 <div class="image-item">
 <div class="item-info">
 <div class="item-name">Iced Americano</div>
 <div class="item-price">₹80</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -415,7 +405,7 @@ Shakes
 <div class="item-name">Cold Coffee Shake</div>
 <div class="item-price">₹100</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -423,7 +413,7 @@ Shakes
 <div class="item-name">Oreo Shake</div>
 <div class="item-price">₹110</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -431,7 +421,7 @@ Shakes
 <div class="item-name">KitKat Shake</div>
 <div class="item-price">₹110</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -439,7 +429,7 @@ Shakes
 <div class="item-name">Chocolate Shake</div>
 <div class="item-price">₹120</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 </div>
@@ -451,19 +441,19 @@ Shakes
 
 <div class="category">
 
-<div class="category-header" onclick="toggleCategory(this)">
+<div class="category-title" onclick="toggle(this)">
 Soup
 <span class="arrow">▶</span>
 </div>
 
-<div class="category-items">
+<div class="items">
 
 <div class="image-item">
 <div class="item-info">
 <div class="item-name">Mix Veg Soup</div>
 <div class="item-price">₹50</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -471,7 +461,7 @@ Soup
 <div class="item-name">Hot & Sour Soup</div>
 <div class="item-price">₹50</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 <div class="image-item">
@@ -479,7 +469,7 @@ Soup
 <div class="item-name">Tomato Soup</div>
 <div class="item-price">₹50</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 </div>
@@ -491,19 +481,19 @@ Soup
 
 <div class="category">
 
-<div class="category-header" onclick="toggleCategory(this)">
+<div class="category-title" onclick="toggle(this)">
 Dessert
 <span class="arrow">▶</span>
 </div>
 
-<div class="category-items">
+<div class="items">
 
 <div class="image-item">
 <div class="item-info">
 <div class="item-name">Gulab Jamun (3pcs)</div>
 <div class="item-price">₹50</div>
 </div>
-<img src="" class="food-img">
+<img src="IMAGE_URL" class="food-img">
 </div>
 
 </div>
@@ -513,12 +503,12 @@ Dessert
 
 <script>
 
-function toggleCategory(element){
+function toggle(el){
 
-const items = element.nextElementSibling
-const arrow = element.querySelector(".arrow")
+let items = el.nextElementSibling
+let arrow = el.querySelector(".arrow")
 
-items.classList.toggle("hidden")
+items.classList.toggle("hide")
 arrow.classList.toggle("rotate")
 
 }
