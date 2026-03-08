@@ -1,160 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Spicy Masti</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<title>Restaurant Menu</title>
 
 <style>
 
 body{
+font-family: Arial;
 margin:0;
-font-family:Poppins;
-background:white;
-padding-bottom:130px;
+background:#f5f5f5;
 }
 
-/* INTRO */
+/* HEADER */
 
-#intro{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:white;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
-animation:fadeout 1s forwards;
-animation-delay:2s;
-}
-
-.intro-logo{
-font-size:42px;
-font-weight:800;
-animation:zoom 2s;
-}
-
-@keyframes zoom{
-0%{transform:scale(0.5);opacity:0}
-100%{transform:scale(1);opacity:1}
-}
-
-@keyframes fadeout{
-to{opacity:0;visibility:hidden}
-}
-
-/* BLACK 3D LOGO */
-
-.logo{
-text-align:center;
-font-size:46px;
-font-weight:800;
-color:#000;
-margin:25px 0;
-letter-spacing:2px;
-
-text-shadow:
-0 2px 0 #333,
-0 4px 0 #222,
-0 6px 0 #111,
-0 10px 18px rgba(0,0,0,0.35);
-}
-
-/* CONTACT BUTTONS */
-
-.action-buttons{
-display:flex;
-gap:10px;
-padding:0 16px;
-margin-bottom:12px;
-}
-
-.action-buttons a{
-flex:1;
-text-align:center;
-padding:14px;
-border-radius:12px;
-font-weight:600;
-text-decoration:none;
-color:black;
-box-shadow:0 6px 0 rgba(0,0,0,0.2),0 10px 16px rgba(0,0,0,0.2);
-}
-
-.call-btn{background:#00fa9a;}
-.map-btn{background:#48d1cc;}
-
-/* SEARCH */
-
-.search-wrapper{
-position:sticky;
-top:0;
-background:white;
-padding:12px 16px;
-z-index:5;
-border-bottom:1px solid #eee;
-}
-
-.search-wrapper input{
-width:100%;
-padding:14px;
-border-radius:14px;
-border:1px solid #ccc;
-font-size:16px;
-}
-
-/* MENU */
-
-.menu{
-padding:16px;
-}
-
-.category{
-margin-bottom:20px;
-}
-
-/* CATEGORY TITLE */
-
-.category-title{
+.header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-font-weight:700;
-font-size:18px;
-padding:12px;
+padding:15px 20px;
 background:white;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
 position:sticky;
-top:65px;
-z-index:4;
-border-bottom:2px solid #eee;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:black;
+text-shadow:
+1px 1px 0 #888,
+2px 2px 0 #666,
+3px 3px 0 #444,
+4px 4px 5px rgba(0,0,0,0.4);
+}
+
+.header-links{
+font-size:14px;
+}
+
+.header-links span{
+margin-left:15px;
 cursor:pointer;
+color:#333;
 }
 
-.items{
-display:block;
+/* CATEGORY */
+
+.category{
+margin:20px;
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* ITEM */
+.category-header{
+padding:15px;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#fafafa;
+}
+
+.arrow{
+transition:0.3s;
+}
+
+.category-items{
+padding:10px;
+}
+
+/* MENU ITEM */
 
 .image-item{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:14px 0;
-border-bottom:1px dashed #ddd;
-}
-
-.food-img{
-width:120px;
-height:120px;
-border-radius:16px;
-object-fit:cover;
+padding:12px;
+border-bottom:1px solid #eee;
 }
 
 .item-info{
@@ -163,78 +93,73 @@ flex-direction:column;
 }
 
 .item-name{
-font-weight:700;
-font-size:18px;
+font-size:16px;
+font-weight:600;
 }
 
 .item-price{
-font-size:16px;
-font-weight:600;
-margin-top:4px;
+font-size:14px;
+color:#666;
 }
 
-/* BOTTOM BUTTONS */
-
-.bottom-buttons{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-display:flex;
-z-index:100;
+.food-img{
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:10px;
+background:#ddd;
 }
 
-.bottom-buttons a{
-flex:1;
-padding:16px;
-font-weight:600;
-text-align:center;
-text-decoration:none;
-color:white;
+/* HIDDEN */
+
+.hidden{
+display:none;
 }
 
-.offer-btn{background:#ffa500;}
-.settings-btn{background:#444;}
+.rotate{
+transform:rotate(90deg);
+}
 
 </style>
 </head>
 
+
 <body>
 
-<div id="intro">
-<div class="intro-logo">Spicy Masti</div>
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="logo">
+SP Restaurant
 </div>
 
-<div class="logo">Spicy Masti</div>
-
-<div class="action-buttons">
-<a href="tel:7290945445" class="call-btn">📞 Contact Us</a>
-<a href="https://maps.app.goo.gl/RL4HiaMXgbRnvpVm8" target="_blank" class="map-btn">📍 Location</a>
+<div class="header-links">
+<span>Offers</span>
+<span>Settings</span>
 </div>
 
-<div class="search-wrapper">
-<input type="text" placeholder="Search menu items...">
 </div>
 
-<section class="menu">
+
 
 <!-- BURGER -->
 
 <div class="category">
 
-<div class="category-title" onclick="toggleCategory(this)">
-<span>Burger</span>
-<span class="arrow">▼</span>
+<div class="category-header" onclick="toggleCategory(this)">
+Burger
+<span class="arrow">▶</span>
 </div>
 
-<div class="items">
+<div class="category-items">
 
 <div class="image-item">
 <div class="item-info">
 <div class="item-name">Aloo Tikki Burger</div>
 <div class="item-price">₹40</div>
 </div>
-<img src="https://shorturl.at/2iJOS" class="food-img">
+<img src="" class="food-img">
 </div>
 
 <div class="image-item">
@@ -242,7 +167,7 @@ color:white;
 <div class="item-name">Cheese Burger</div>
 <div class="item-price">₹55</div>
 </div>
-<img src="https://shorturl.at/yPypv" class="food-img">
+<img src="" class="food-img">
 </div>
 
 <div class="image-item">
@@ -250,7 +175,7 @@ color:white;
 <div class="item-name">Double Tikki Burger</div>
 <div class="item-price">₹60</div>
 </div>
-<img src="https://shorturl.at/et1Ti" class="food-img">
+<img src="" class="food-img">
 </div>
 
 <div class="image-item">
@@ -258,30 +183,31 @@ color:white;
 <div class="item-name">French Burger</div>
 <div class="item-price">₹80</div>
 </div>
-<img src="https://shorturl.at/imVh8" class="food-img">
+<img src="" class="food-img">
 </div>
 
 </div>
 </div>
+
 
 
 <!-- MAGGI -->
 
 <div class="category">
 
-<div class="category-title" onclick="toggleCategory(this)">
-<span>Maggi</span>
-<span class="arrow">▼</span>
+<div class="category-header" onclick="toggleCategory(this)">
+Maggi
+<span class="arrow">▶</span>
 </div>
 
-<div class="items">
+<div class="category-items">
 
 <div class="image-item">
 <div class="item-info">
 <div class="item-name">Masala Maggi</div>
 <div class="item-price">₹30</div>
 </div>
-<img src="" class="food-img">
+<img src="https://shorturl.at/I42mQ" class="food-img">
 </div>
 
 <div class="image-item">
@@ -297,7 +223,7 @@ color:white;
 <div class="item-name">Veggie Maggi</div>
 <div class="item-price">₹45</div>
 </div>
-<img src="" class="food-img">
+<img src="https://shorturl.at/XKymK" class="food-img">
 </div>
 
 <div class="image-item">
@@ -305,7 +231,7 @@ color:white;
 <div class="item-name">Cheese Maggi</div>
 <div class="item-price">₹60</div>
 </div>
-<img src="" class="food-img">
+<img src="https://shorturl.at/9xaMT" class="food-img">
 </div>
 
 <div class="image-item">
@@ -313,7 +239,7 @@ color:white;
 <div class="item-name">Chilli Hot Garlic Maggi</div>
 <div class="item-price">₹70</div>
 </div>
-<img src="" class="food-img">
+<img src="https://shorturl.at/pStWd" class="food-img">
 </div>
 
 <div class="image-item">
@@ -321,23 +247,24 @@ color:white;
 <div class="item-name">Maggi Delight</div>
 <div class="item-price">₹80</div>
 </div>
-<img src="" class="food-img">
+<img src="https://shorturl.at/0fvkw" class="food-img">
 </div>
 
 </div>
 </div>
+
 
 
 <!-- SNACKS -->
 
 <div class="category">
 
-<div class="category-title" onclick="toggleCategory(this)">
-<span>Snacks</span>
-<span class="arrow">▼</span>
+<div class="category-header" onclick="toggleCategory(this)">
+Snacks
+<span class="arrow">▶</span>
 </div>
 
-<div class="items">
+<div class="category-items">
 
 <div class="image-item">
 <div class="item-info">
@@ -355,20 +282,61 @@ color:white;
 <img src="" class="food-img">
 </div>
 
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Butter Masala Sweetcorn</div>
+<div class="item-price">₹50</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Tandoori Sweetcorn</div>
+<div class="item-price">₹60</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">French Fries</div>
+<div class="item-price">₹80</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Peri Peri Fries</div>
+<div class="item-price">₹90</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Cheese Fries</div>
+<div class="item-price">₹120</div>
+</div>
+<img src="" class="food-img">
+</div>
+
 </div>
 </div>
+
 
 
 <!-- PASTA -->
 
 <div class="category">
 
-<div class="category-title" onclick="toggleCategory(this)">
-<span>Pasta</span>
-<span class="arrow">▼</span>
+<div class="category-header" onclick="toggleCategory(this)">
+Pasta
+<span class="arrow">▶</span>
 </div>
 
-<div class="items">
+<div class="category-items">
 
 <div class="image-item">
 <div class="item-info">
@@ -386,16 +354,162 @@ color:white;
 <img src="" class="food-img">
 </div>
 
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">White Sauce Pasta</div>
+<div class="item-price">₹110 | ₹140</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Red Sauce Pasta</div>
+<div class="item-price">₹110 | ₹140</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Mix Sauce Pasta</div>
+<div class="item-price">₹110 | ₹140</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Pasta Delight</div>
+<div class="item-price">₹130 | ₹160</div>
+</div>
+<img src="" class="food-img">
+</div>
+
 </div>
 </div>
 
 
-</section>
 
-<div class="bottom-buttons">
-<a href="offer.html" class="offer-btn">🏷 Offers</a>
-<a href="Setting.html" class="settings-btn">⚙ Settings</a>
+<!-- SHAKES -->
+
+<div class="category">
+
+<div class="category-header" onclick="toggleCategory(this)">
+Shakes
+<span class="arrow">▶</span>
 </div>
+
+<div class="category-items">
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Iced Americano</div>
+<div class="item-price">₹80</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Cold Coffee Shake</div>
+<div class="item-price">₹100</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Oreo Shake</div>
+<div class="item-price">₹110</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">KitKat Shake</div>
+<div class="item-price">₹110</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Chocolate Shake</div>
+<div class="item-price">₹120</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+</div>
+</div>
+
+
+
+<!-- SOUP -->
+
+<div class="category">
+
+<div class="category-header" onclick="toggleCategory(this)">
+Soup
+<span class="arrow">▶</span>
+</div>
+
+<div class="category-items">
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Mix Veg Soup</div>
+<div class="item-price">₹50</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Hot & Sour Soup</div>
+<div class="item-price">₹50</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Tomato Soup</div>
+<div class="item-price">₹50</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+</div>
+</div>
+
+
+
+<!-- DESSERT -->
+
+<div class="category">
+
+<div class="category-header" onclick="toggleCategory(this)">
+Dessert
+<span class="arrow">▶</span>
+</div>
+
+<div class="category-items">
+
+<div class="image-item">
+<div class="item-info">
+<div class="item-name">Gulab Jamun (3pcs)</div>
+<div class="item-price">₹50</div>
+</div>
+<img src="" class="food-img">
+</div>
+
+</div>
+</div>
+
+
 
 <script>
 
@@ -404,17 +518,13 @@ function toggleCategory(element){
 const items = element.nextElementSibling
 const arrow = element.querySelector(".arrow")
 
-if(items.style.display === "none"){
-items.style.display = "block"
-arrow.textContent="▼"
-}else{
-items.style.display = "none"
-arrow.textContent="▲"
-}
+items.classList.toggle("hidden")
+arrow.classList.toggle("rotate")
 
 }
 
 </script>
+
 
 </body>
 </html>
