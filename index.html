@@ -43,6 +43,13 @@ from{transform:scale(1);}
 to{transform:scale(1.2);}
 }
 
+  ----------------------------------------------------------
+
+
+  <!-- HEADER -->
+
+<style>
+
 /* HEADER */
 
 .header{
@@ -57,22 +64,47 @@ top:0;
 z-index:100;
 }
 
+/* LOGO */
+
 .logo{
-font-size:26px;
+font-size:24px;
 font-weight:bold;
 color:black;
-text-shadow:
-1px 1px 0 #777,
-2px 2px 0 #555,
-3px 3px 0 #333;
 }
 
-.navbar span{
-margin-left:18px;
-font-size:14px;
-font-weight:600;
+/* NAV BUTTON */
+
+.menu-btn{
+font-size:26px;
 cursor:pointer;
 }
+
+/* NAV MENU */
+
+.nav-menu{
+position:absolute;
+top:60px;
+right:20px;
+background:white;
+box-shadow:0 4px 12px rgba(0,0,0,0.15);
+border-radius:8px;
+overflow:hidden;
+display:none;
+min-width:150px;
+}
+
+.nav-menu div{
+padding:12px 15px;
+border-bottom:1px solid #eee;
+cursor:pointer;
+font-size:14px;
+}
+
+.nav-menu div:hover{
+background:#f5f5f5;
+}
+
+  
 
 /* CATEGORY */
 
@@ -157,32 +189,27 @@ display:none;
 </div>
 
 
-<!-- HEADER -->
+<!-- Header -->
 
 <div class="header">
 
 <div class="logo">Spicy Masti</div>
 
-<div class="navbar">
-<span>Location</span>
-<span>Help</span>
-<span>Offers</span>
-<span>Settings</span>
-</div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
 </div>
 
 
+<div class="nav-menu" id="navMenu">
 
-<!-- BURGER -->
+<div>Location</div>
+<div>Help</div>
+<div>Offers</div>
+<div>Settings</div>
 
-<div class="category">
-
-<div class="category-title" onclick="toggle(this)">
-Burger
-<span class="arrow">▶</span>
 </div>
-
+  
+  
 <!-- BURGER -->
 
 <div class="category">
@@ -572,8 +599,22 @@ document.getElementById("splash").style.display="none"
 
 },3000)
 
+  
+function toggleMenu(){
+
+let menu=document.getElementById("navMenu")
+
+if(menu.style.display==="block"){
+menu.style.display="none"
+}else{
+menu.style.display="block"
+}
+
+}
+
 </script>
 
 
 </body>
 </html>
+
